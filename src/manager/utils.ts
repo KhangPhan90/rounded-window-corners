@@ -70,7 +70,11 @@ export function clearMutterSettingsCache() {
  * @returns The correct actor that the effect should be applied to.
  */
 export function unwrapActor(actor: Meta.WindowActor): Clutter.Actor | null {
-    const type = actor.metaWindow.get_client_type();
+    const win = actor.metaWindow;
+    if (!win) {
+        return null;
+    }
+    const type = win.get_client_type();
     return type === Meta.WindowClientType.X11 ? actor.get_first_child() : actor;
 }
 
@@ -111,10 +115,16 @@ export function getRoundedCornersEffect(
     actor: Meta.WindowActor,
 ): RoundedCornersEffectType | null {
     const win = actor.metaWindow;
+    if (!win) {
+        return null;
+    }
     const name = ROUNDED_CORNERS_EFFECT;
-    return win.get_client_type() === Meta.WindowClientType.X11
-        ? (actor.firstChild.get_effect(name) as RoundedCornersEffectType)
-        : (actor.get_effect(name) as RoundedCornersEffectType);
+    if (win.get_client_type() === Meta.WindowClientType.X11) {
+        return actor.firstChild
+            ? (actor.firstChild.get_effect(name) as RoundedCornersEffectType)
+            : null;
+    }
+    return actor.get_effect(name) as RoundedCornersEffectType;
 }
 
 /**

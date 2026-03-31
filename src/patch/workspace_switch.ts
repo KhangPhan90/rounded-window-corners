@@ -21,7 +21,7 @@ export function addShadowsInWorkspaceSwitch(
 ) {
     const connections: {object: GObject.Object; id: number}[] = [];
 
-    for (const monitor of self._switchData.monitors) {
+    for (const monitor of (self._switchData?.monitors ?? [])) {
         for (const workspace of monitor._workspaceGroups) {
             const windowRecords = workspace._windowRecords;
 
@@ -104,7 +104,7 @@ export function addShadowsInWorkspaceSwitch(
 export function removeShadowsAfterWorkspaceSwitch(
     self: WorkspaceAnimationController,
 ) {
-    for (const monitor of self._switchData.monitors) {
+    for (const monitor of (self._switchData?.monitors ?? [])) {
         for (const workspace of monitor._workspaceGroups) {
             for (const {clone} of workspace._windowRecords) {
                 (clone as WsAnimationActor).shadowClone?.destroy();

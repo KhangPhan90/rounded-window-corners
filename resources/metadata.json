@@ -1,9 +1,9 @@
 {
-    "name": "Rounded Window Corners Reborn",
-    "description": "Add rounded corners to all windows. Fork of the now unmaintained Rounded Window Corners extension.",
+    "name": "Rouned Window Corners -- Codex",
+    "description": "Rounded Window Corners Reborn fork with GNOME Shell 50 support and null-safety fixes. Forked from flexagoon/rounded-window-corners.",
     "uuid": "rounded-window-corners@fxgn",
-    "url": "https://github.com/flexagoon/rounded-window-corners",
+    "url": "https://github.com/KhangPhan90/rouned-window-corners-codex",
     "gettext-domain": "rounded-window-corners@fxgn",
     "settings-schema": "org.gnome.shell.extensions.rounded-window-corners-reborn",
-    "shell-version": ["49"]
+    "shell-version": ["49", "50"]
 }

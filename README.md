@@ -1,20 +1,24 @@
 ![2022-07-29 23-49-57][6]
 
 <div align="center">
-  <h1>Rounded Window Corners Reborn</h1>
+  <h1>Rouned Window Corners -- Codex</h1>
   <p><i>A GNOME extension that adds rounded corners to all windows</i></p>
-  <a href="https://extensions.gnome.org/extension/7048/rounded-window-corners-reborn">
-    <img src="https://img.shields.io/badge/Install%20from-extensions.gnome.org-4A86CF?style=for-the-badge&logo=Gnome&logoColor=white"/>
-  </a>
 </div>
 <br>
 
 > [!NOTE]
-> This is the fork of the [original rounded-window-corners extension][14] by @yilozt, which is no longer maintained.
+> This repository is a fork of [flexagoon/rounded-window-corners][15], which itself continues the original [yilozt/rounded-window-corners][14] project.
+
+## What This Fork Offers
+
+- GNOME Shell 50 support in addition to GNOME Shell 49
+- Runtime hardening around `metaWindow`, overview, and workspace-switch state to avoid null-reference crashes
+- The current Rounded Window Corners Reborn feature set, packaged as a Codex-maintained fork
 
 ## Features
 
 - Works with Gnome 46+
+- Works with GNOME Shell 49 and 50
 - Custom border radius and clip paddings for windows
 - Blocklist for applications that draw their own window decorations
 - Custom shadow for windows with rounded corners
@@ -53,8 +57,8 @@ pre-built archive from GitHub Actions.
 2. Build the extension
 
     ```bash
-    git clone https://github.com/flexagoon/rounded-window-corners
-    cd rounded-window-corners
+    git clone git@github.com:KhangPhan90/rouned-window-corners-codex.git
+    cd rouned-window-corners-codex
     just install
     ```
 
@@ -117,3 +121,4 @@ Thanks to [yotamguttman](https://github.com/yotamguttman) for making an icon for
 [12]: https://hosted.weblate.org/widgets/rounded-window-corners/-/rounded-window-corners/multi-auto.svg
 [13]: https://hosted.weblate.org/engage/rounded-window-corners/
 [14]: https://github.com/yilozt/rounded-window-corners
+[15]: https://github.com/flexagoon/rounded-window-corners
