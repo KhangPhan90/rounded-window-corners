@@ -1,7 +1,7 @@
 ![2022-07-29 23-49-57][6]
 
 <div align="center">
-  <h1>Rouned Window Corners -- Codex</h1>
+  <h1>Rounded Window Corners -- Codex</h1>
   <p><i>A GNOME extension that adds rounded corners to all windows</i></p>
 </div>
 <br>
@@ -57,8 +57,8 @@ pre-built archive from GitHub Actions.
 2. Build the extension
 
     ```bash
-    git clone git@github.com:KhangPhan90/rouned-window-corners-codex.git
-    cd rouned-window-corners-codex
+    git clone git@github.com:KhangPhan90/rounded-window-corners-codex.git
+    cd rounded-window-corners-codex
     just install
     ```
 
