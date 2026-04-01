@@ -2,7 +2,7 @@
 set shell := ['bash', '-O', 'globstar', '-c']
 
 buildDir := './_build'
-uuid := 'rounded-window-corners@fxgn'
+uuid := 'rounded-window-corners-next@khangphan90.github.io'
 
 # Compile the extension and all resources
 build: clean && pot

@@ -1,7 +1,10 @@
-# Rounded Window Corners
+# Rounded Window Corners Next
 
 Fork of [flexagoon/rounded-window-corners](https://github.com/flexagoon/rounded-window-corners),
 which continues [yilozt/rounded-window-corners](https://github.com/yilozt/rounded-window-corners).
+
+Published name: `Rounded Window Corners Next`
+UUID: `rounded-window-corners-next@khangphan90.github.io`
 
 ## What this fork updates
 

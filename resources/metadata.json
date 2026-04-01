@@ -1,9 +1,9 @@
 {
-    "name": "Rounded Window Corners",
-    "description": "Rounded Window Corners Reborn fork with GNOME Shell 50 support and null-safety fixes. Forked from flexagoon/rounded-window-corners.",
-    "uuid": "rounded-window-corners@fxgn",
+    "name": "Rounded Window Corners Next",
+    "description": "Rounded Window Corners Next is a fork of flexagoon/rounded-window-corners with GNOME Shell 50 support, runtime hardening, and transient shadow binding leak fixes.",
+    "uuid": "rounded-window-corners-next@khangphan90.github.io",
     "url": "https://github.com/KhangPhan90/rounded-window-corners",
-    "gettext-domain": "rounded-window-corners@fxgn",
-    "settings-schema": "org.gnome.shell.extensions.rounded-window-corners-reborn",
+    "gettext-domain": "rounded-window-corners-next@khangphan90.github.io",
+    "settings-schema": "org.gnome.shell.extensions.rounded-window-corners-next",
     "shell-version": ["49", "50"]
 }
