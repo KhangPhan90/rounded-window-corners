@@ -13,7 +13,7 @@
 
 - GNOME Shell 50 support in addition to GNOME Shell 49
 - Runtime hardening around `metaWindow`, overview, and workspace-switch state to avoid null-reference crashes
-- The current Rounded Window Corners Reborn feature set, packaged as a maintained fork
+- Safer handling around overview shadows and workspace-switch monitor data
 
 ## Features
 
