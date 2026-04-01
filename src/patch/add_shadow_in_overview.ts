@@ -51,12 +51,15 @@ export function addShadowInOverview(window: Meta.Window, self: WindowPreview) {
 
     // Create a clone of the window's shadow actor and add it to the preview
     const shadowActorClone = new OverviewShadowActorClone(shadow, self);
-    windowContainer.bind_property('scale-x', shadowActorClone, 'scale-x', 1);
-    windowContainer.bind_property('scale-y', shadowActorClone, 'scale-y', 1);
+    const propertyBindings = [
+        windowContainer.bind_property('scale-x', shadowActorClone, 'scale-x', 1),
+        windowContainer.bind_property('scale-y', shadowActorClone, 'scale-y', 1),
+    ];
     self.insert_child_below(shadowActorClone, windowContainer);
 
     // Disconnect all signals when the window preview is destroyed
     const connection = self.connect('destroy', () => {
+        propertyBindings.forEach(binding => binding.unbind());
         shadowActorClone.destroy();
         firstChild?.clear_effects();
         firstChild = null;

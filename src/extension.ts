@@ -34,6 +34,7 @@ export default class RoundedWindowCornersReborn extends Extension {
     #windowPicker: WindowPicker | null = null;
 
     #layoutManagerStartupConnection: number | null = null;
+    #prefsChangedConnection: number | null = null;
     #workspaceSwitchConnections: {object: GObject.Object; id: number}[] | null =
         null;
 
@@ -113,13 +114,16 @@ export default class RoundedWindowCornersReborn extends Extension {
         );
 
         // Watch for changes of the `enable-preferences-entry` prefs key.
-        prefs.connect('changed', (_: Gio.Settings, key: string) => {
+        this.#prefsChangedConnection = prefs.connect(
+            'changed',
+            (_: Gio.Settings, key: string) => {
             if (key === 'enable-preferences-entry') {
                 getPref('enable-preferences-entry')
                     ? enableBackgroundMenuItem()
                     : disableBackgroundMenuItem();
             }
-        });
+            },
+        );
 
         logDebug('Enabled');
     }
@@ -144,9 +148,15 @@ export default class RoundedWindowCornersReborn extends Extension {
             this.#layoutManagerStartupConnection = null;
         }
 
+        if (this.#prefsChangedConnection !== null) {
+            prefs.disconnect(this.#prefsChangedConnection);
+            this.#prefsChangedConnection = null;
+        }
+
         for (const connection of this.#workspaceSwitchConnections ?? []) {
             connection.object.disconnect(connection.id);
         }
+        this.#workspaceSwitchConnections = null;
 
         logDebug('Disabled');
 

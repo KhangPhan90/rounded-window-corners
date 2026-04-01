@@ -9,7 +9,10 @@ import Clutter from 'gi://Clutter';
 import {getRoundedCornersEffect, windowScaleFactor} from '../manager/utils.js';
 import {SHADOW_PADDING} from '../utils/constants.js';
 
-type WsAnimationActor = Clutter.Actor & {shadowClone?: Clutter.Actor};
+type WsAnimationActor = Clutter.Actor & {
+    shadowClone?: Clutter.Actor;
+    shadowCloneBindings?: GObject.Binding[];
+};
 
 /**
  * Add shadows to windows when switching workspaces.
@@ -87,7 +90,9 @@ export function addShadowsInWorkspaceSwitch(
                 // Store the reference to the shadow clone. This allows restacking
                 // them, as you can see at the top of this function.
                 (clone as WsAnimationActor).shadowClone = shadowClone;
-                clone.bind_property('visible', shadowClone, 'visible', 0);
+                (clone as WsAnimationActor).shadowCloneBindings = [
+                    clone.bind_property('visible', shadowClone, 'visible', 0),
+                ];
 
                 workspace.insert_child_below(shadowClone, clone);
             }
@@ -107,6 +112,11 @@ export function removeShadowsAfterWorkspaceSwitch(
     for (const monitor of (self._switchData?.monitors ?? [])) {
         for (const workspace of monitor._workspaceGroups) {
             for (const {clone} of workspace._windowRecords) {
+                for (const binding of (clone as WsAnimationActor)
+                    .shadowCloneBindings ?? []) {
+                    binding.unbind();
+                }
+                delete (clone as WsAnimationActor).shadowCloneBindings;
                 (clone as WsAnimationActor).shadowClone?.destroy();
                 delete (clone as WsAnimationActor).shadowClone;
             }
